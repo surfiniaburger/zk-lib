@@ -1,6 +1,6 @@
-import { groth16 } from "snarkjs";
-import { unpackGroth16Proof } from "@zk-kit/utils/proof-packing";
-import verificationKeys from "./verification-keys.json";
+import { groth16 } from "snarkjs"
+import { unpackGroth16Proof } from "@zk-kit/utils/proof-packing"
+import verificationKeys from "./verification-keys.json"
 
 /**
  * Verifies that a HealthRecordVerification proof is valid.
@@ -11,11 +11,11 @@ import verificationKeys from "./verification-keys.json";
  */
 export default function verify(recordHash: string, criteriaHash: string, proof: any): Promise<boolean> {
     // Get the verification key from the JSON file
-    const verificationKey = verificationKeys;
+    const verificationKey = verificationKeys
 
     // Public signals in your circuit are [recordHash, criteriaHash]
-    const publicSignals = [recordHash, criteriaHash];
+    const publicSignals = [recordHash, criteriaHash]
 
     // Unpack the proof and pass it to groth16.verify
-    return groth16.verify(verificationKey, publicSignals, unpackGroth16Proof(proof));
+    return groth16.verify(verificationKey, publicSignals, unpackGroth16Proof(proof))
 }
